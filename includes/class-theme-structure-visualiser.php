@@ -7,6 +7,7 @@
  * @since 0.0.1
  */
 
+// If this file is called directly, abort.
 if ( !defined( ABSPATH ) ) {
 	exit();
 }
