@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Summary (no period for file headers)
+ *
+ * Description. (use period)
+ *
+ * @author  Shantanu Desai <shantanu2846@gmail.com>
+ * @since 0.0.1
+ */
+
 /*
 Plugin Name: Theme Structure Visualiser
 Plugin URI	  :  
