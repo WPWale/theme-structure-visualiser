@@ -20,3 +20,8 @@ Text Domain: theme-structure-visualiser
 Domain Path: /languages
 License	  : GPL2
  */
+
+// If this file is called directly, abort.
+if ( !defined( ABSPATH ) ) {
+	exit();
+}
