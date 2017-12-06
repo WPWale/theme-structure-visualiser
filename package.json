@@ -1,16 +1,16 @@
 {
-    "name": "shortcode-in-menus",
-    "version": "1.0.0",
-    "main": "shortcode-in-menus.php",
+    "name": "theme-structure-visualiser",
+    "version": "0.0.1",
+    "main": "theme-structure-visualiser",
     "repository": {
         "type": "git",
-        "url": "https://github.com/gagan0123/shortcode-in-menus"
+        "url": "https://github.com/BaapWP/theme-structure-visualiser"
     },
     "keywords": [
         "wordpress"
     ],
     "bugs": {
-        "url": "https://wordpress.org/support/plugin/shortcode-in-menus"
+        "url": "https://github.com/BaapWP/theme-structure-visualiser/issues"
     },
     "author": "Gagan Deep Singh",
     "license": "GPL-2.0",
