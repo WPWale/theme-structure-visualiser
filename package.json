@@ -12,7 +12,7 @@
     "bugs": {
         "url": "https://github.com/BaapWP/theme-structure-visualiser/issues"
     },
-    "author": "Gagan Deep Singh",
+    "author": "Shantanu Desai",
     "license": "GPL-2.0",
     "devDependencies": {
         "grunt": "^1.0.1",
