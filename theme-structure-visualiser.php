@@ -34,3 +34,12 @@ if ( ! defined( 'TSV_PATH' ) ) {
 	 */
 	define( 'TSV_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 }
+
+if ( ! defined( 'TSV_URL' ) ) {
+	/**
+	 * URL to the plugin directory.
+	 *
+	 * @since 3.2
+	 */
+	define( 'TSV_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
+}
