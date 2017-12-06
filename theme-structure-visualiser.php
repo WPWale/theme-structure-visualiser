@@ -25,3 +25,12 @@ License	  : GPL2
 if ( !defined( ABSPATH ) ) {
 	exit();
 }
+
+if ( ! defined( 'TSV_PATH' ) ) {
+	/**
+	 * Path to the plugin directory.
+	 *
+	 * @since 3.2
+	 */
+	define( 'TSV_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+}
