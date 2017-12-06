@@ -25,7 +25,7 @@ module.exports = function ( grunt ) {
 					sourceMap: true,
 				},
 				files: {
-					'admin/js/shortcode-in-menus.min.js': [ 'admin/js/shortcode-in-menus.js' ]
+					'admin/js/theme-structure-visualiser.min.js': [ 'admin/js/theme-structure-visualiser.js' ]
 				}
 			}
 		},
