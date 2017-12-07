@@ -73,42 +73,32 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		}
 
 		/**
-		 * Initialise the class
+		 * Get templates
 		 *
 		 * Description.
 		 *
 		 * @since 0.0.1 
 		 */
-		function get_included_file_names() {
-			$mm_current_filter = current_filter();
+		function get_templates() {
+			$current_filter = current_filter();
 
-			$patterns = array();
+			$hook_patterns = array();
 
-			foreach ( $file_types as $type ) {
-				$patterns[ $type ] = "get_$type";
+			foreach ( $this->template_identifiers as $template_identifier ) {
+				$hook_patterns[ $template_identifier ] = "get_$template_identifier";
 			}
-
-			if ( !in_array( $mm_current_filter, $patterns ) ) {
-				if ( !strstr( $mm_current_filter, $patterns[ 'template_part' ] ) ) {
-					return;
-				}
-			}
+					
 			$hook_arguments = func_get_args();
 			$slug = $name = '';
 
-			if ( in_array( $mm_current_filter, $patterns ) ) {
-				$patterns_flip = array_flip( $patterns );
-				$slug = $patterns_flip[ $mm_current_filter ];
+			if ( in_array( $current_filter, $hook_patterns ) ) {
+				$flipped_hook_patterns = array_flip( $hook_patterns );
+				$slug	= $flipped_hook_patterns[ $current_filter ];
 				$name = $hook_arguments[ 1 ];
 			}
 
-			if ( strstr( $mm_current_filter, $patterns[ 'template_part' ] ) ) {
-				$slug	 = $hook_arguments[ 1 ];
-				$name = $hook_arguments[ 2 ];
-			}
-
 			if ( 'header' !== $slug ) {
-				mm_print_path( $slug, $name );
+				print_path( $slug, $name );
 			} else {
 				global $mm_header_slug, $mm_header_name;
 				$mm_header_slug	 = $slug;
