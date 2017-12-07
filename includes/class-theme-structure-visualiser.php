@@ -92,6 +92,10 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			
 			$current_filter = current_filter();
 
+			if ( !in_array( $current_filter, $hook_patterns ) ) {
+				return;
+			}
+
 			$hook_patterns = array();
 
 			foreach ( $this->template_identifiers as $template_identifier ) {
