@@ -20,7 +20,11 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 	 */
 	class Theme_Structure_Visualiser {
 		
-		private $file_types = array( 'header', 'footer', 'sidebar', 'template_part' );
+		/**
+		 * Template types to hold
+		 * @var array  
+		 */
+		private $template_identifiers = array( 'header', 'footer', 'sidebar');
 		
 		/**
 		 * Initialise the class
