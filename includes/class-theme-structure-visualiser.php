@@ -23,7 +23,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @var array  
 		 */
-		private $template_identifiers = array( 'header', 'footer', 'sidebar');
+		private $template_identifiers = array();
 
 		/**
 		 * Identifiers for template parts
@@ -36,8 +36,17 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-						
-			$template_identifiers = $this->template_identifiers;
+			
+			/*
+			 * This array contains text that will be used for
+			 * 
+			 *  1. Identifying the template hook
+			 *  For eg, 'get_header' hook from 'header'
+			 * 
+			 *  2. Identifying the template file
+			 *  For eg, 'header.php' from 'header'
+			 */
+			$template_identifiers = array( 'header', 'footer', 'sidebar');
 			
 			/**
 			 * Filters the template identifiers
@@ -47,7 +56,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * @param array $template_identifiers A list of templates, eg header, footer, etc.
 			 */
 			$this->template_identifiers = apply_filters( 'tsv_template_identifiers', $template_identifiers );
-			
+						
 			$template_part_identifiers  = $this->template_part_identifiers ;
 
 			/**
@@ -80,6 +89,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1 
 		 */
 		function get_templates() {
+			
 			$current_filter = current_filter();
 
 			$hook_patterns = array();
