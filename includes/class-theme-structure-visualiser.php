@@ -90,29 +90,50 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function get_templates() {
 			
-			$current_filter = current_filter();
+			// Get the handle of the current hook
+			$current_hook_handle = current_filter();
 
-			if ( !in_array( $current_filter, $hook_patterns ) ) {
-				return;
-			}
-
+			// Initialise a variable to store the handles of template hooks
 			$hook_patterns = array();
 
+			// Loop through the identifiers 
 			foreach ( $this->template_identifiers as $template_identifier ) {
+				
+				// Get the hook handle by prefixing 
 				$hook_patterns[ $template_identifier ] = "get_$template_identifier";
 			}
-					
-			$hook_arguments = func_get_args();
+
+			// Bail early if the current hook is not a template hook
+			if ( !in_array( $current_hook_handle, $hook_patterns ) ) {
+				return;
+			}
+			
+			// Get the arguements passed with the current hook
+			$current_hook_arguments = func_get_args();
+			
+			// Initialise template slug and name
 			$slug = $name = '';
 
-			if ( in_array( $current_filter, $hook_patterns ) ) {
-				$flipped_hook_patterns = array_flip( $hook_patterns );
-				$slug	= $flipped_hook_patterns[ $current_filter ];
-				$name = $hook_arguments[ 1 ];
-			}
+			// Flip the keys and values of the pattern array
+			$flipped_hook_patterns = array_flip( $hook_patterns );
+			
+			// The template 'slug' is 'header' at 'get_header' key, for example
+			$slug = $flipped_hook_patterns[ $current_hook_handle ];
+			
+			//  The template 'name' is the second arguement.
+			$name = $current_hook_arguments[ 1 ];
 
+			// If the slug is not 'header'
 			if ( 'header' !== $slug ) {
+				
+				//print the output
 				print_path( $slug, $name );
+				
+			/* 
+			 * Otherwise if it is 'header' and we can't print into the template
+			 * because outputting markup in the document header breaks the 
+			 * things on the browser.
+			 */		
 			} else {
 				global $mm_header_slug, $mm_header_name;
 				$mm_header_slug	 = $slug;
