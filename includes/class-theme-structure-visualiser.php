@@ -77,7 +77,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1 
 		 */
 		function init() {
-			add_action( 'all', array( $this, 'get_included_file_names' ) );
+			add_action( 'all', array( $this, 'get_templates' ) );
 			add_action( 'wp_head', array( $this, 'print_header' ) );
 		}
 
