@@ -10,7 +10,7 @@
  */
 /*
   Plugin Name: Theme Structure Visualiser
-  Plugin URI	  :
+  Plugin URI:	  :
   Description  : Visualise the basic structure of a website
   Version	  : 0.0.1
   Author	  : Shantanu Desai
@@ -21,9 +21,7 @@
  */
 
 // If this file is called directly, abort.
-if ( !defined( ABSPATH ) ) {
-	exit();
-}
+if ( !defined( ABSPATH ) ) exit();
 
 if ( !defined( 'TSV_PATH' ) ) {
 	/**
@@ -40,7 +38,7 @@ if ( !defined( 'TSV_URL' ) ) {
 	 *
 	 * @since 3.2
 	 */
-	define( 'TSV_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
+	define( 'TSV_URL', trailingslashit( plugin_dir_url(  __FILE__ ) ) );
 }
 
 /**

@@ -129,16 +129,16 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			$flipped_hook_patterns = array_flip( $hook_patterns );
 			
 			// The template 'slug' is 'header' at 'get_header' key, for example
-			$this->$template_slug = $flipped_hook_patterns[ $current_hook_handle ];
+			$this->template_slug = $flipped_hook_patterns[ $current_hook_handle ];
 			
 			//  The template 'name' is the second arguement.
-			$this->$template_name = $current_hook_arguments[ 1 ];
+			$this->template_name = $current_hook_arguments[ 1 ];
 
 			// If the slug is not 'header'
-			if ( 'header' !== $template_slug ) {
+			if ( 'header' !== $this->template_slug ) {
 				
 				//print the output
-				$this->display_structure();
+				//$this->display_structure();
 				
 			/* 
 			 * Otherwise if it is 'header' and we can't print into the template
@@ -146,9 +146,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * things on the browser.
 			 */		
 			} else {
-				
-				$mm_header_slug	 = $template_slug;
-				$mm_header_name	 = $template_name;
 			}
 		}
 		
