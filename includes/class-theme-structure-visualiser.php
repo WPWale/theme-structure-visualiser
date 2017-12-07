@@ -1,15 +1,13 @@
 <?php
-
 /**
  * Theme structure visualiser
  * 
  * @author Shantanu Desai <shantanu2846@gmail.com>
  * @since 0.0.1
  */
+
 // If this file is called directly, abort.
-if ( !defined( ABSPATH ) ) {
-	exit();
-}
+if ( !defined( ABSPATH ) ) exit();
 
 if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
@@ -19,13 +17,21 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 	 * @since 0.0.1
 	 */
 	class Theme_Structure_Visualiser {
-		
+
 		/**
-		 * Template types to hold
+		 * Identifiers for templates
+		 * 
 		 * @var array  
 		 */
 		private $template_identifiers = array( 'header', 'footer', 'sidebar');
-		
+
+		/**
+		 * Identifiers for template parts
+		 * 
+		 * @var array
+		 */
+		private $template_part_identifiers = array( 'template_part');		
+
 		/**
 		 * Initialise the class
 		 *
