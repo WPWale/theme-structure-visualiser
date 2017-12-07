@@ -33,6 +33,34 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		private $template_part_identifiers = array( 'template_part');		
 
 		/**
+		 * Constructor
+		 */
+		public function __construct() {
+						
+			$template_identifiers = $this->template_identifiers;
+			
+			/**
+			 * Filters the template identifiers
+			 * 
+			 * @since 0.0.1
+			 * 
+			 * @param array $template_identifiers A list of templates, eg header, footer, etc.
+			 */
+			$this->template_identifiers = apply_filters( 'tsv_template_identifiers', $template_identifiers );
+			
+			$template_part_identifiers  = $this->template_part_identifiers ;
+
+			/**
+			 * Filters the template part identifiers
+			 * 
+			 * @since 0.0.1
+			 * 
+			 * @param array $template_part_identifiers A list of template parts, eg template_part.
+			 */
+			$this->template_part_identifiers = apply_filters( 'tsv_template_part_identifiers', $template_part_identifiers );
+		}
+		
+		/**
 		 * Initialise the class
 		 *
 		 * Description.
