@@ -92,7 +92,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function init() {
 			add_action( 'all', array( $this, 'get_templates' ) );
-			add_action( 'wp_head', array( $this, 'print_header' ) );
+			//add_action( 'wp_head', array( $this, 'print_header' ) );
 		}
 
 		/**
@@ -157,6 +157,10 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function display_structure() {
 			
+			$slug = $this->template_slug;
+			$name = $this->template_name;
+			
+			include TSV_PATH . 'templates/display-structure.php';			
 		}
 
 	}

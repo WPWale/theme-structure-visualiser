@@ -47,3 +47,6 @@ if ( !defined( 'TSV_URL' ) ) {
  * The core plugin class
  */
 require_once TSV_PATH . 'includes/class-theme-structure-visualiser.php';
+
+$tsv = new Theme_Structure_Visualiser();
+$tsv->init();
