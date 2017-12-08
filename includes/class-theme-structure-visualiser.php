@@ -30,7 +30,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @var array
 		 */
-		private $template_part_identifiers = array( 'template_part');
+		private $template_part_identifiers = array();
 
 		/**
 		 * Template slug
@@ -71,7 +71,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 */
 			$this->template_identifiers = apply_filters( 'tsv_template_identifiers', $template_identifiers );
 
-			$template_part_identifiers  = $this->template_part_identifiers ;
+			$template_part_identifiers  = array( 'template_part');
 
 			/**
 			 * Filters the template part identifiers
