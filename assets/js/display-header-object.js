@@ -5,6 +5,8 @@ jQuery( 'document' ).ready( function ( $ ) {
             $( "footer.site-footer" ).prepend( $( this ) );
         } else if ( $( this ).hasClass( 'sidebar' ) ) {
             $( "#secondary.widget-area" ).prepend( $( this ) );
+        } else {
+            $(this).next().prepend($(this));
         }
     } );
 
