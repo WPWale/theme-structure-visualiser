@@ -1,3 +1,3 @@
-<div class="tsv-template-path <?php echo $slug; ?>">
+<div class="tsv-template-path <?php echo $class; ?>">
 	<?php echo $path; ?>
 </div>
