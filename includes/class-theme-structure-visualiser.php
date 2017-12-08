@@ -168,23 +168,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		
 		/**
-		 * Display the name of the header file
-		 * 
-		 * @since 0.0.1
-		 */
-		function display_header_object() {
-			
-			// Setup the required variables
-			$path = $this->setup_template_variables();
-			
-			$slug = $this->template_slug;
-
-			// Include the template that prints a div around the output
-			include TSV_PATH . 'templates/display-header-structure.php';			
-		}
-		
-		
-		/**
 		 * Setup the template variables
 		 * 
 		 * @return string Template name to be displayed
