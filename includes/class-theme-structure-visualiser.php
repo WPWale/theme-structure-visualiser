@@ -159,6 +159,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			
 			// Setup the required variables
 			$path = $this->setup_template_variables();
+			
+			$slug = $this->template_slug;
 
 			// Include the template that prints a div around the output
 			include TSV_PATH . 'templates/display-structure.php';			
@@ -170,10 +172,12 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @since 0.0.1
 		 */
-		function display_header_structure() {
+		function display_header_object() {
 			
 			// Setup the required variables
 			$path = $this->setup_template_variables();
+			
+			$slug = $this->template_slug;
 
 			// Include the template that prints a div around the output
 			include TSV_PATH . 'templates/display-header-structure.php';			
