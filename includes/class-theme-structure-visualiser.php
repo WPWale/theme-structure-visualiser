@@ -7,7 +7,7 @@
  */
 
 // If this file is called directly, abort.
-if ( !defined( ABSPATH ) ) exit();
+if ( !defined( 'ABSPATH' ) ) exit();
 
 if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
