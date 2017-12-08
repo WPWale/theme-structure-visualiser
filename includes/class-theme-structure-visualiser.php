@@ -31,14 +31,14 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @var array
 		 */
 		private $template_part_identifiers = array( 'template_part');
-		
+
 		/**
 		 * Template slug
 		 * 
 		 * @var string 
 		 */
 		private $template_slug;
-		
+
 		/**
 		 * Template name
 		 * 
@@ -50,7 +50,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			
+
 			/*
 			 * This array contains text that will be used for
 			 * 
@@ -61,7 +61,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 *  For eg, 'header.php' from 'header'
 			 */
 			$template_identifiers = array( 'header', 'footer', 'sidebar');
-			
+
 			/**
 			 * Filters the template identifiers
 			 * 
@@ -70,7 +70,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * @param array $template_identifiers A list of templates, eg header, footer, etc.
 			 */
 			$this->template_identifiers = apply_filters( 'tsv_template_identifiers', $template_identifiers );
-						
+
 			$template_part_identifiers  = $this->template_part_identifiers ;
 
 			/**
@@ -82,11 +82,9 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 */
 			$this->template_part_identifiers = apply_filters( 'tsv_template_part_identifiers', $template_part_identifiers );
 		}
-		
+
 		/**
 		 * Initialise the class
-		 *
-		 * Description.
 		 *
 		 * @since 0.0.1 
 		 */
@@ -98,12 +96,10 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		/**
 		 * Get templates
 		 *
-		 * Description.
-		 *
-		 * @since 0.0.1 
+		 * @sinc 0.0.1 
 		 */
 		function get_templates() {
-			
+
 			// Get the handle of the current hook
 			$current_hook_handle = current_filter();
 
@@ -112,7 +108,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// Loop through the identifiers 
 			foreach ( $this->template_identifiers as $template_identifier ) {
-				
+
 				// Get the hook handle by prefixing 
 				$hook_patterns[ $template_identifier ] = "get_$template_identifier";
 			}
@@ -121,45 +117,45 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			if ( !in_array( $current_hook_handle, $hook_patterns ) ) {
 				return;
 			}
-			
+
 			// Get the arguements passed with the current hook
 			$current_hook_arguments = func_get_args();
 
 			// Flip the keys and values of the pattern array
 			$flipped_hook_patterns = array_flip( $hook_patterns );
-			
+
 			// The template 'slug' is 'header' at 'get_header' key, for example
 			$this->template_slug = $flipped_hook_patterns[ $current_hook_handle ];
-			
+
 			//  The template 'name' is the second arguement.
 			$this->template_name = $current_hook_arguments[ 1 ];
 
 			// If the slug is not 'header'
 			if ( 'header' !== $this->template_slug ) {
-				
+
 				//print the output
 				$this->display_structure();
-				
+
 			}
 		}
-		
+
 		/**
 		 * Display the names of template files
 		 * 
 		 * @since 0.0.1
 		 */
 		function display_structure() {
-			
+
 			// Setup the required variables
 			$path = $this->setup_template_variables();
-			
+
 			$slug = $this->template_slug;
 
 			// Include the template that prints a div around the output
 			include TSV_PATH . 'templates/display-structure.php';			
 		}
-		
-		
+
+
 		/**
 		 * Setup the template variables
 		 * 
@@ -168,10 +164,10 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1		 * 
 		 */
 		function setup_template_variables() {
-			
+
 			$slug = $this->template_slug;
 			$name = $this->template_name;
-			
+
 			// If the 'slug' is empty, return
 			if ( empty( $slug ) ) {
 				return;
@@ -188,23 +184,26 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// Concatenate the two parts of the file name and the extension
 			return ($slug . $second_part . '.php');
-			
+
 		}
-		
+
+		/**
+		 * Enqueue the scripts
+		 * 
+		 * @since 0.0.1
+		 */
 		function enqueue(){
-			
-			/*
-			 * Otherwise if it is 'header' and we can't print into the template
-			 * because outputting markup in the document header breaks the 
-			 * things on the browser.
-			 */
+
+			// If the slug is not 'header' return early
 			if ( 'header'!== $this->template_slug ) {
 
 				return;
 			}
+
+			// Enqueue the display header srcipt from the js directory
 			wp_enqueue_script( 'display_header_object', TSV_URL . 'assets/js/display-header-object.js', array('jquery')  );
 
-
+			// Localize the script to send variables from PHP to Javascript
 			wp_localize_script( 'display_header_object', 'tsv_header_filename', array(
 				'slug'	 => $this->template_slug,
 				'path'	 => $this->setup_template_variables(),
