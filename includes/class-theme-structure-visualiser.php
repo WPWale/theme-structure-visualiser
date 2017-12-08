@@ -45,6 +45,13 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @var string
 		 */
 		private $template_name;
+		
+		/**
+		 * Template class
+		 * 
+		 * @var string
+		 */
+		private $template_class;
 
 		/**
 		 * Constructor
@@ -90,6 +97,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function init() {
 			add_action( 'all', array( $this, 'get_templates' ) );
+			add_action( 'all', array( $this, 'get_template_parts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 		}
 
@@ -138,6 +146,44 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			}
 		}
+		
+		
+		/**
+		 * 
+		 */
+		function get_template_parts(){
+
+			// Get the handle of the current hook
+			$current_hook_handle = current_filter();
+			
+			// Initialise a variable to store the handles of template hooks
+			$hook_patterns = array();
+
+			// Loop through the identifiers 
+			foreach ( $this->template_part_identifiers as $template_part_identifier ) {
+
+				// Get the hook handle by prefixing 
+				$hook_patterns[ $template_part_identifier ] = "get_$template_part_identifier";
+			}
+
+			foreach ( $hook_patterns as $key => $hook_pattern) {
+				
+				if ( strstr( $current_hook_handle, $hook_pattern ) ){
+					
+					// Get the arguements passed with the current hook
+					$current_hook_arguments = func_get_args();	
+					
+					$this->template_class = $key;
+					$this->template_slug = $current_hook_arguments[ 1 ];
+					$this->template_name = $current_hook_arguments[ 2 ];
+					
+					//print the output
+					$this->display_structure();
+				}
+			}
+			
+		}
+
 
 		/**
 		 * Display the names of template files
