@@ -132,7 +132,10 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			// Flip the keys and values of the pattern array
 			$flipped_hook_patterns = array_flip( $hook_patterns );
 
-			// The template 'slug' is 'header' at 'get_header' key, for example
+			// The template 'name' is 'header' at 'get_header' key, for example
+			$this->template_name = $flipped_hook_patterns[ $current_hook_handle ];
+			
+			// The template 'slug' is the same as 'template_name'
 			$this->template_slug = $flipped_hook_patterns[ $current_hook_handle ];
 
 			//  The template 'name' is the second arguement.
