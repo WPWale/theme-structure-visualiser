@@ -92,7 +92,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function init() {
 			add_action( 'all', array( $this, 'get_templates' ) );
-			// add_action( 'wp_head', array( $this, 'print_header' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 		}
 
 		/**
@@ -140,23 +140,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				//print the output
 				$this->display_structure();
 				
-			/* 
-			 * Otherwise if it is 'header' and we can't print into the template
-			 * because outputting markup in the document header breaks the 
-			 * things on the browser.
-			 */		
-			} else {
-				
-				wp_register_script('display_header_objcet', TSV_PATH . 'assests/js/display-header-object.js');
-				
-				$file_name_array = array(
-					'slug' => $this->template_slug,
-					'path' => $this->setup_template_variables(),
-					);
-				
-				wp_localize_script('display_header_objcet', 'tsv_header_filename', $file_name_array);
-				
-				wp_enqueue_script('display_header_object');					
 			}
 		}
 		
@@ -207,7 +190,27 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			return ($slug . $second_part . '.php');
 			
 		}
+		
+		function enqueue(){
+			
+			/*
+			 * Otherwise if it is 'header' and we can't print into the template
+			 * because outputting markup in the document header breaks the 
+			 * things on the browser.
+			 */
+			if ( 'header'!== $this->template_slug ) {
 
-	}
+				return;
+			}
+			wp_enqueue_script( 'display_header_object', TSV_URL . 'assets/js/display-header-object.js', array('jquery')  );
 
-}
+
+			wp_localize_script( 'display_header_object', 'tsv_header_filename', array(
+				'slug'	 => $this->template_slug,
+				'path'	 => $this->setup_template_variables(),
+			) );
+		}
+
+	}// class
+
+} //class_exists
