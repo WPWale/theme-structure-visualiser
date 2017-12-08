@@ -157,7 +157,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function display_structure() {
 			
-
+			// Setup the required variables
+			$path = $this->setup_template_variables();
 
 			// Include the template that prints a div around the output
 			include TSV_PATH . 'templates/display-structure.php';			
@@ -166,6 +167,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		/**
 		 * Setup the template variables
+		 * 
+		 * @return string Template name to be displayed
 		 * 
 		 * @since 0.0.1		 * 
 		 */
@@ -189,7 +192,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			}
 
 			// Concatenate the two parts of the file name and the extension
-			$path = $slug . $second_part . '.php';
+			return $path = $slug . $second_part . '.php';
 			
 		}
 
