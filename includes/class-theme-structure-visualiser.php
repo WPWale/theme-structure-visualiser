@@ -146,7 +146,18 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * things on the browser.
 			 */		
 			} else {
+				$path = $this->setup_template_variables();
+								
+				wp_register_script('display_header_objcet', TSV_PATH . 'assests/js/display-header-object.js');
 				
+				$file_name_array = array(
+					'slug' => $this->template_slug,
+					'path' => $path,
+					);
+				
+				wp_localize_script('display_header_objcet', 'tsv_header_filename', $file_name_array);
+				
+				wp_enqueue_script('display_header_object');					
 			}
 		}
 		
