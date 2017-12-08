@@ -151,7 +151,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		}
 		
 		/**
-		 * Display the final structure
+		 * Display the names of template files
 		 * 
 		 * @since 0.0.1
 		 */
@@ -166,7 +166,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		
 		/**
-		 * Display the final structure for the header file
+		 * Display the name of the header file
 		 * 
 		 * @since 0.0.1
 		 */
