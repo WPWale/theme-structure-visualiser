@@ -194,14 +194,16 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function enqueue(){
 
+			// Enqueue the display header srcipt from the js directory
+			wp_enqueue_script( 'display_header_object', TSV_URL . 'assets/js/display-header-object.js', array('jquery')  );
+			
+			
 			// If the slug is not 'header' return early
 			if ( 'header'!== $this->template_slug ) {
 
 				return;
 			}
 
-			// Enqueue the display header srcipt from the js directory
-			wp_enqueue_script( 'display_header_object', TSV_URL . 'assets/js/display-header-object.js', array('jquery')  );
 
 			// Localize the script to send variables from PHP to Javascript
 			wp_localize_script( 'display_header_object', 'tsv_header_filename', array(
