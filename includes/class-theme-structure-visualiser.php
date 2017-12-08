@@ -92,7 +92,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function init() {
 			add_action( 'all', array( $this, 'get_templates' ) );
-			add_action( 'wp_head', array( $this, 'print_header' ) );
+			// add_action( 'wp_head', array( $this, 'print_header' ) );
 		}
 
 		/**
@@ -146,13 +146,12 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * things on the browser.
 			 */		
 			} else {
-				$path = $this->setup_template_variables();
-								
+				
 				wp_register_script('display_header_objcet', TSV_PATH . 'assests/js/display-header-object.js');
 				
 				$file_name_array = array(
 					'slug' => $this->template_slug,
-					'path' => $path,
+					'path' => $this->setup_template_variables(),
 					);
 				
 				wp_localize_script('display_header_objcet', 'tsv_header_filename', $file_name_array);
@@ -205,7 +204,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			}
 
 			// Concatenate the two parts of the file name and the extension
-			return $path = $slug . $second_part . '.php';
+			return ($slug . $second_part . '.php');
 			
 		}
 
