@@ -92,7 +92,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function init() {
 			add_action( 'all', array( $this, 'get_templates' ) );
-			//add_action( 'wp_head', array( $this, 'print_header' ) );
+			add_action( 'wp_head', array( $this, 'print_header' ) );
 		}
 
 		/**
@@ -138,7 +138,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			if ( 'header' !== $this->template_slug ) {
 				
 				//print the output
-				//$this->display_structure();
+				$this->display_structure();
 				
 			/* 
 			 * Otherwise if it is 'header' and we can't print into the template
@@ -146,18 +146,51 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * things on the browser.
 			 */		
 			} else {
+				
 			}
 		}
 		
 		/**
+		 * Display the final structure
 		 * 
+		 * @since 0.0.1
 		 */
 		function display_structure() {
+			
+
+
+			// Include the template that prints a div around the output
+			include TSV_PATH . 'templates/display-structure.php';			
+		}
+		
+		
+		/**
+		 * Setup the template variables
+		 * 
+		 * @since 0.0.1		 * 
+		 */
+		function setup_template_variables() {
 			
 			$slug = $this->template_slug;
 			$name = $this->template_name;
 			
-			include TSV_PATH . 'templates/display-structure.php';			
+			// If the 'slug' is empty, return
+			if ( empty( $slug ) ) {
+				return;
+			}
+
+			// Initialise a variable to hold the optional second part of the template name
+			$second_part = '';
+
+			// Check if the 'name' is empty
+			if ( !empty( $name ) ) {
+				// If it isn't empty, assign it to the variable
+				$second_part = "-$name";
+			}
+
+			// Concatenate the two parts of the file name and the extension
+			$path = $slug . $second_part . '.php';
+			
 		}
 
 	}
