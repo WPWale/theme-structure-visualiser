@@ -435,7 +435,28 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		
 		
+		/**
+		 * Check color
+		 * 
+		 * Matches the pattern of the string entered by the user.
+		 * 
+		 * @param string User entered hex value
+		 *
+		 *  @return boolean
+		 * 
+		 * @since 0.0.1
+		 */
+		function check_color( $value ) {
+		
+			if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) {
+			
+				return true;
+			}
+
+			return false;
+		}
+
 
 	}// class
 
-} //class_exists
+} //class_exists1
