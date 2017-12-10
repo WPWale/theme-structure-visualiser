@@ -100,8 +100,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			add_action( 'all', array( $this, 'get_templates' ) );
 			add_action( 'all', array( $this, 'get_template_parts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
-			add_action( 'admin_init', 'register_settings' );
-			add_action( 'admin_menu', 'register_options_page' );
+			add_action( 'admin_init', array( $this, 'register_settings' ) );
+			add_action( 'admin_menu', array( $this, 'register_options_page' ) );
 		}
 
 		/**
@@ -273,7 +273,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 		function register_options_page()
 		{
-			add_options_page('Structure Visualiser Options', 'TSV Options', 'manage_options', 'theme-structure-visualise');	
+				add_options_page('Structure Visualiser Options', 'TSV Options', 'manage_options', 'theme-structure-visualiser');	
 		}
 	}// class
 
