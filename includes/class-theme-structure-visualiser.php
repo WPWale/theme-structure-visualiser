@@ -52,6 +52,13 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @var string
 		 */
 		private $template_class;
+		
+		/**
+		 * Style Options
+		 * 
+		 * @var string
+		 */
+		private $style_options;
 
 		/**
 		 * Constructor
@@ -281,6 +288,18 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				'path'	 => $this->setup_template_variables(),
 			) );
 		}
+		
+		
+		/**
+		 * Add an options page under the settings menu
+		 * 
+		 * @since 0.0.1
+		 */
+		function add_page(){
+			add_options_page( 'TSV Options', 'TSV Options', 'manage_options', __FILE__, array( $this, 'display_page' ) );
+		}
+		
+		
 	}// class
 
 } //class_exists
