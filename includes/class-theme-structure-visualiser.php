@@ -378,6 +378,63 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			echo '<input type="text" name="tsv_settings_options[font-colour] 
 				value=" ' . $val . ' " class="tsv_color_picker>';
 		}
+		
+		
+		
+		/**
+		 * Validate options
+		 * 
+		 * Validate all fields
+		 * 
+		 * @var array Holds the fields
+		 * 
+		 * @since 	0.0.1
+		 */
+		function validate_options($fields) {
+			
+			$validate_fields = array();
+
+			// Validate background colour field
+			$background_colour = trim( $fields[ 'bakground-colour' ] );
+			$valid_fields[ 'background-colour' ] = strip_tags( striplashes( $background_colour ) );
+
+			// Validate font colour field
+			$font_colour = trim( $fields[ 'font-colour' ] );
+			$valid_fields[ 'font-colour' ]	 = strip_tags( striplashes( $font_colour ) );
+
+			// Check if the hex value is valid for bg color
+			if ( FALSE === $this->check_color( $backgound_color ) ) {
+
+				// Set error message
+				add_settings_error( 'tsv_settings_options', 'tsv_bg_color_error', 'Insert a valid color for the background', 'error' );
+
+				// Get the previous valid value
+				$valid_fields[ 'background-color' ] = $this->options[ 'bakground-colour' ];
+			}
+			else {
+
+				$valid_fields[ 'bakground-colour' ] = $bakground_colour;
+			}
+
+			// Check if the hex value is valid
+			if ( FALSE === $this->check_color( $font_colour ) ) {
+
+				// Set error message
+				add_settings_error( 'tsv_settings_options', 'tsv_font_color_error', 'Insert a valid color for the font', 'error' );
+
+				// Get the previous valid value
+				$valid_fields[ 'font-color' ] = $this->options[ 'font-colour' ];
+			}
+			else {
+
+				$valid_fields[ 'font-colour' ] = $font_colour;
+			}
+
+			return apply_filters( 'validate_options', $valid_fields, $fields );
+		}
+		
+		
+		
 
 	}// class
 
