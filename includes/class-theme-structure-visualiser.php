@@ -96,10 +96,30 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1 
 		 */
 		function init() {
-			
+
+			// Get template name
 			add_action( 'all', array( $this, 'get_templates' ) );
+			
+			// Get template part name
 			add_action( 'all', array( $this, 'get_template_parts' ) );
+			
+			// Enqueue jQuery
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+
+			// Add the page to the admin menu
+			add_action( 'admin_menu', array( &$this, 'add_page' ) );
+
+			// Register page options
+			add_action( 'admin_init', array( &$this, 'register_page_options' ) );
+
+			// Css rules for Color Picker
+			wp_enqueue_style( 'wp-color-picker' );
+
+			// Register javascript
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
+
+			// Get registered option
+			$this->options = get_option( 'cpa_settings_options' );
 		}
 
 		/**
