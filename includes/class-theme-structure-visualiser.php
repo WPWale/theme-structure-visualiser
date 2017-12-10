@@ -260,6 +260,12 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				'path'	 => $this->setup_template_variables(),
 			) );
 		}
+		
+		
+		function register_settings()
+		{
+			
+		}
 
 	}// class
 
