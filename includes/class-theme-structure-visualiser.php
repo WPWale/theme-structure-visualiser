@@ -56,7 +56,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		/**
 		 * Style Options
 		 * 
-		 * @var string
+		 * @var array
 		 */
 		private $style_options;
 
@@ -95,6 +95,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * @param array $template_part_identifiers A list of template parts, eg template_part.
 			 */
 			$this->template_part_identifiers = apply_filters( 'tsv_template_part_identifiers', $template_part_identifiers );
+
 		}
 
 		/**
@@ -118,9 +119,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// Register page options
 			add_action( 'admin_init', array( &$this, 'register_page_options' ) );
-
-			// Css rules for Color Picker
-			wp_enqueue_style( 'wp-color-picker' );
 
 			// Register javascript
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
@@ -298,6 +296,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1
 		 */
 		function add_page() {
+			
 			add_options_page( 'TSV Options', 'TSV Options', 'manage_options', __FILE__, array( $this, 'display_page' ) );
 		}
 
@@ -310,6 +309,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1
 		 */
 		function display_page() {
+			
 			?>
 			<div class="wrap">
 				<h2> Theme Structure Visualiser OPtions </h2>
@@ -376,9 +376,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			$val = ( isset( $this->options[ 'font-colour' ] ) ) ?
 			$this->options[ 'font-colour' ] : '';
 			echo '<input type="text" name="tsv_settings_options[font-colour] 
-				value=" ' . $val . ' " class="tsv_color_picker>';
+				value=" ' . $val . ' " class="tsv-color-picker">';
 		}
-		
 		
 		
 		/**
@@ -392,15 +391,15 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function validate_options($fields) {
 			
-			$validate_fields = array();
+			$valid_fields = array();
 
 			// Validate background colour field
-			$background_colour = trim( $fields[ 'bakground-colour' ] );
-			$valid_fields[ 'background-colour' ] = strip_tags( striplashes( $background_colour ) );
+			$background_colour = trim( $fields[ 'background_colour' ] );
+			$valid_fields[ 'background_colour' ] = strip_tags( striplashes( $background_colour ) );
 
 			// Validate font colour field
-			$font_colour = trim( $fields[ 'font-colour' ] );
-			$valid_fields[ 'font-colour' ]	 = strip_tags( striplashes( $font_colour ) );
+			$font_colour = trim( $fields[ 'font_colour' ] );
+			$valid_fields[ 'font_colour' ]	 = strip_tags( striplashes( $font_colour ) );
 
 			// Check if the hex value is valid for bg color
 			if ( FALSE === $this->check_color( $backgound_color ) ) {
@@ -409,11 +408,11 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				add_settings_error( 'tsv_settings_options', 'tsv_bg_color_error', 'Insert a valid color for the background', 'error' );
 
 				// Get the previous valid value
-				$valid_fields[ 'background-color' ] = $this->options[ 'bakground-colour' ];
+				$valid_fields[ 'background_colour' ] = $this->options[ 'background_colour' ];
 			}
 			else {
 
-				$valid_fields[ 'bakground-colour' ] = $bakground_colour;
+				$valid_fields[ 'background_colour' ] = $background_colour;
 			}
 
 			// Check if the hex value is valid
@@ -423,12 +422,16 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				add_settings_error( 'tsv_settings_options', 'tsv_font_color_error', 'Insert a valid color for the font', 'error' );
 
 				// Get the previous valid value
-				$valid_fields[ 'font-color' ] = $this->options[ 'font-colour' ];
+				$valid_fields[ 'font_colour' ] = $this->options[ 'font_colour' ];
 			}
 			else {
 
-				$valid_fields[ 'font-colour' ] = $font_colour;
+				$valid_fields[ 'font_colour' ] = $font_colour;
 			}
+			
+			wp_enqueue_script( 'custom_options_object', TSV_URL . 'assets/js/jquery.custom.js', array('jquery')  );
+			
+			wp_localize_script( 'custom_options_object', 'tsv_custom_options', $valid_fields);			
 
 			return apply_filters( 'validate_options', $valid_fields, $fields );
 		}
@@ -455,8 +458,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			return false;
 		}
-
-
 				
 		
 		/**
@@ -467,10 +468,19 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1
 		 */
 		function enqueue_admin_js() {
-			wp_enqueue_script( 'tsv_custom_js', TVS_URL . 'assets/js/jquery.custom.js', array( 'jquery', 'wp-color-picker' ), '', true );
+						
+			// Css rules for Color Picker
+			wp_enqueue_style( 'wp-color-picker' );
+			
+			wp_enqueue_script( 'tsv_custom_js', TSV_URL . 'assets/js/jquery.custom.js', array( 'jquery', 'wp-color-picker' ), '', true );
 		}
 		
-		
+		function display_section() {
+
+			// Intentionally left blank
+			
+		}
+
 	}// class
 
 } //class_exists1
