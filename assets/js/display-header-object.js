@@ -6,7 +6,7 @@ jQuery( 'document' ).ready( function ( $ ) {
         } else if ( $( this ).hasClass( 'sidebar' ) ) {
             $( "#secondary.widget-area" ).prepend( $( this ) );
         } else {
-            $(this).next().prepend($(this));
+            $( this ).next().prepend( $( this ) );
         }
     } );
 
