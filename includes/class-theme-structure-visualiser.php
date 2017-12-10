@@ -293,7 +293,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		/**
 		 * Add page
 		 * 
-		 * Add an options page under the settings menu
+		 * Add an options page under the settings menu.
 		 * 
 		 * @since 0.0.1
 		 */
@@ -305,7 +305,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		/**
 		 * Display page
 		 * 
-		 * Display the options page
+		 * Display the options page.
 		 * 
 		 * @since 0.0.1
 		 */
@@ -328,7 +328,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		/**
 		 * Register page options
 		 * 
-		 * Register admin page options
+		 * Register admin page options.
 		 * 
 		 * @since 0.0.1
 		 */
@@ -337,23 +337,46 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			// Add a section
 			add_settings_section( 'tsv_section', 'Plugin OPtions', array( $this, 'display_section' ), __FILE__ );
 			
-			// Add the background color field
-			add_settings_field( 'tsv_background_field', 'Background Color', array( $this, ('background_settings_field') ), __FILE__, 'tsv_section' );
+			// Add the background coluor field
+			add_settings_field( 'tsv_background_field', 'Background Color', array( $this, ('bg_colour_settings_field') ), __FILE__, 'tsv_section' );
 			
-			// Add a font color field
-			add_settings_field( 'tsv_font_field', 'Font Color', array( $this, ('font_settings_field') ), __FILE__, 'tsv_section' );
+			// Add a font colour field
+			add_settings_field( 'tsv_font_field', 'Font Color', array( $this, ('font_colour_settings_field') ), __FILE__, 'tsv_section' );
 			
 			// Register the setting
 			register_setting( __FILE__, 'tsv_settings_options', array( $this, ('validate_options') ) );
 		}
 		
 		
-		function background_settings_field() {
+		/**
+		 * Background colour settings field
+		 * 
+		 * Set the background for the template/template-part names.
+		 * 
+		 * @since  0.0.1
+		 */
+		function bg_colour_settings_field() {
 
-			$val = ( isset( $this->options[ 'background' ] ) ) ? $this->options[ 'background' ] :
-			'';
-			echo '<input type="text" name="tsv_settings_options[background]
+			$val = ( isset( $this->options[ 'background-colour' ] ) ) ? 
+			$this->options[ 'background-colour' ] : '';
+			echo '<input type="text" name="tsv_settings_options[background-colour]
 				value=" ' . $val . ' " class="tsv-color-picker">';
+		}
+		
+		
+		/**
+		 * Font colour settings field
+		 * 
+		 * Sets the font colour for the template/template-part names.
+		 * 
+		 * @since 0.0.1		 * 
+		 */
+		function font_colour_settings_field() {
+
+			$val = ( isset( $this->options[ 'font-colour' ] ) ) ?
+			$this->options[ 'font-colour' ] : '';
+			echo '<input type="text" name="tsv_settings_options[font-colour] 
+				value=" ' . $val . ' " class="tsv_color_picker>';
 		}
 
 	}// class
