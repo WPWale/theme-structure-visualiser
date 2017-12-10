@@ -291,6 +291,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		
 		/**
+		 * Add page
+		 * 
 		 * Add an options page under the settings menu
 		 * 
 		 * @since 0.0.1
@@ -301,6 +303,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 		
 		/**
+		 * Display page
+		 * 
 		 * Display the options page
 		 * 
 		 * @since 0.0.1
@@ -317,6 +321,30 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 					</form>
 			</div> <!-- wrap -->
 			<?php
+		}
+		
+		
+		
+		/**
+		 * Register page options
+		 * 
+		 * Register admin page options
+		 * 
+		 * @since 0.0.1
+		 */
+		function register_page_options() {
+			
+			// Add a section
+			add_settings_section( 'tsv_section', 'Plugin OPtions', array( $this, 'display_section' ), __FILE__ );
+			
+			// Add the background color field
+			add_settings_field( 'tsv_background_field', 'Background Color', array( $this, ('background_settings_field') ), __FILE__, 'tsv_section' );
+			
+			// Add a font color field
+			add_settings_field( 'tsv_font_field', 'Font Color', array( $this, ('font_settings_field') ), __FILE__, 'tsv_section' );
+			
+			// Register the setting
+			register_setting( __FILE__, 'tsv_settings_options', array( $this, ('validate_options') ) );
 		}
 
 	}// class
