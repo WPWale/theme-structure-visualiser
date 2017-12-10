@@ -264,7 +264,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		function register_settings()
 		{
-			
+			add_option('theme_structure_visualiser_options', 'User customizations for theme structure visualiser');
+			register_setting('theme_structure_visualiser_options_group', 'theme_structure_visualiser_options');
 		}
 
 	}// class
