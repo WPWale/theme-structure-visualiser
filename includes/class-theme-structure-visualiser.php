@@ -271,7 +271,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 		function register_options_page()
 		{
-			
+			add_options_page('Structure Visualiser Options', 'TSV Options', 'manage_options', 'theme-structure-visualise');
 		}
 	}// class
 
