@@ -469,6 +469,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		function enqueue_admin_js() {
 			wp_enqueue_script( 'tsv_custom_js', TVS_URL . 'assets/js/jquery.custom.js', array( 'jquery', 'wp-color-picker' ), '', true );
 		}
+		
+		
 	}// class
 
 } //class_exists1
