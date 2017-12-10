@@ -346,6 +346,15 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			// Register the setting
 			register_setting( __FILE__, 'tsv_settings_options', array( $this, ('validate_options') ) );
 		}
+		
+		
+		function background_settings_field() {
+
+			$val = ( isset( $this->options[ 'background' ] ) ) ? $this->options[ 'background' ] :
+			'';
+			echo '<input type="text" name="tsv_settings_options[background]
+				value=" ' . $val . ' " class="tsv-color-picker">';
+		}
 
 	}// class
 
