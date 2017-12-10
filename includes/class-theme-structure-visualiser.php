@@ -457,6 +457,18 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		}
 
 
+				
+		
+		/**
+		 * Enqueue admin javascript
+		 * 
+		 * Enqueue the javascript for the color picker
+		 * 
+		 * @since 0.0.1
+		 */
+		function enqueue_admin_js() {
+			wp_enqueue_script( 'tsv_custom_js', TVS_URL . 'assets/js/jquery.custom.js', array( 'jquery', 'wp-color-picker' ), '', true );
+		}
 	}// class
 
 } //class_exists1
