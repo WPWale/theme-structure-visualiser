@@ -269,6 +269,10 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			register_setting('theme_structure_visualiser_options_group', 'theme_structure_visualiser_options');
 		}
 
+		function register_options_page()
+		{
+			
+		}
 	}// class
 
 } //class_exists
