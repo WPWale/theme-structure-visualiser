@@ -295,11 +295,30 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @since 0.0.1
 		 */
-		function add_page(){
+		function add_page() {
 			add_options_page( 'TSV Options', 'TSV Options', 'manage_options', __FILE__, array( $this, 'display_page' ) );
 		}
+
 		
-		
+		/**
+		 * Display the options page
+		 * 
+		 * @since 0.0.1
+		 */
+		function display_page() {
+			?>
+			<div class="wrap">
+				<h2> Theme Structure Visualiser OPtions </h2>
+					<form method="post" action="options.php">
+					<?php
+					settings_fields( __FILE__ );
+					do_settings_sections( __FILE__ );
+					?>
+					</form>
+			</div> <!-- wrap -->
+			<?php
+		}
+
 	}// class
 
 } //class_exists
