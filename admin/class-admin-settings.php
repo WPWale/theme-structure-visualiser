@@ -37,6 +37,9 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		 */
 		public function init() {
 			
+			// Apply the color settings
+			add_action( 'wp_head', array( &$this, 'apply_colours' ) );
+
 			// Add the page to the admin menu
 			add_action( 'admin_menu', array( &$this, 'add_page' ) );
 
@@ -44,7 +47,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 			add_action( 'admin_init', array( &$this, 'register_page_options' ) );
 
 			// Register javascript
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
+			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_admin_js' ) );
 
 			// Get registered option
 			$this->style_options = get_option( 'tsv_settings_options' );
@@ -243,6 +246,19 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 			wp_enqueue_script( 'tsv_custom_js', TSV_URL . 'assets/js/jquery.custom.js', array( 'jquery', 'wp-color-picker' ), '', true );
 		}
 		
+		
+		public function apply_colours(){
+			
+			?>
+			<style>
+				.tsv-template-path {
+					background-color: <?php echo $this->style_options[ 'background_colour' ]; ?>;
+					color: <?php echo $this->style_options[ 'font_colour' ]; ?>;
+				}
+			</style>
+			<?php
+		}
+
 		public function display_section() {
 
 			// Intentionally left blank
