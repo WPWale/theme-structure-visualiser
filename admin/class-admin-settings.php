@@ -256,6 +256,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 					color: <?php echo $this->style_options[ 'font_colour' ]; ?>;
 					padding: 1rem 1rem;
 					border-radius: 10px 10px 10px 10px;
+					margin-bottom: 1rem;
 				}
 			</style>
 			<?php
