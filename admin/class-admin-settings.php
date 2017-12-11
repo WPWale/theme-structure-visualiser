@@ -141,8 +141,10 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 
 			$val = ( isset( $this->style_options[ 'font_colour' ] ) ) ?
 				$this->style_options[ 'font_colour' ] : '';
-			echo '<input type="text" name="tsv_settings_options[font_colour]" 
-				value=" ' . $val . ' " class="tsv-color-picker">';
+			?>
+			<input type="text" name="tsv_settings_options[font_colour]" 
+				value="<?php echo $val; ?>" class="tsv-color-picker">';
+			<?php
 		}
 		
 		
@@ -196,10 +198,6 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 
 				$valid_fields[ 'font_colour' ] = $font_colour;
 			}
-			
-			wp_enqueue_script( 'custom_options_object', TSV_URL . 'assets/js/jquery.custom.js', array('jquery')  );
-			
-			wp_localize_script( 'custom_options_object', 'tsv_custom_options', $valid_fields);			
 
 			return apply_filters( 'validate_options', $valid_fields, $fields );
 		}
