@@ -317,6 +317,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 					<?php
 					settings_fields( __FILE__ );
 					do_settings_sections( __FILE__ );
+					submit_button();
+
 					?>
 					</form>
 			</div> <!-- wrap -->
@@ -395,14 +397,14 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// Validate background colour field
 			$background_colour = trim( $fields[ 'background_colour' ] );
-			$valid_fields[ 'background_colour' ] = strip_tags( striplashes( $background_colour ) );
+			$valid_fields[ 'background_colour' ] = strip_tags( stripslashes( $background_colour ) );
 
 			// Validate font colour field
 			$font_colour = trim( $fields[ 'font_colour' ] );
-			$valid_fields[ 'font_colour' ]	 = strip_tags( striplashes( $font_colour ) );
+			$valid_fields[ 'font_colour' ]	 = strip_tags( stripslashes( $font_colour ) );
 
 			// Check if the hex value is valid for bg color
-			if ( FALSE === $this->check_color( $backgound_color ) ) {
+			if ( FALSE === $this->check_color( $background_colour ) ) {
 
 				// Set error message
 				add_settings_error( 'tsv_settings_options', 'tsv_bg_color_error', 'Insert a valid color for the background', 'error' );
@@ -452,6 +454,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		function check_color( $value ) {
 		
 			if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) {
+				echo "Preg_match returned true";
 			
 				return true;
 			}
