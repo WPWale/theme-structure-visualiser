@@ -1,25 +1,26 @@
 {
-    "name": "theme-structure-visualiser",
-    "version": "0.0.1",
-    "main": "theme-structure-visualiser",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/BaapWP/theme-structure-visualiser"
-    },
-    "keywords": [
-        "wordpress"
-    ],
-    "bugs": {
-        "url": "https://github.com/BaapWP/theme-structure-visualiser/issues"
-    },
-    "author": "Shantanu Desai",
-    "license": "GPL-2.0",
-    "devDependencies": {
-        "grunt": "^1.0.1",
-        "grunt-contrib-uglify": "^3.0.1",
-        "grunt-contrib-watch": "^1.0.0",
-        "grunt-wp-i18n": "^1.0.0",
-        "grunt-wp-readme-to-markdown": "^2.0.1"
-    },
-    "dependencies": {}
+  "name": "theme-structure-visualiser",
+  "version": "0.0.1",
+  "main": "theme-structure-visualiser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BaapWP/theme-structure-visualiser"
+  },
+  "keywords": [
+    "wordpress"
+  ],
+  "bugs": {
+    "url": "https://github.com/BaapWP/theme-structure-visualiser/issues"
+  },
+  "author": "Shantanu Desai",
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-phpcs": "^0.4.0",
+    "grunt-wp-i18n": "^1.0.0",
+    "grunt-wp-readme-to-markdown": "^2.0.1"
+  },
+  "dependencies": {}
 }
