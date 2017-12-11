@@ -124,7 +124,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
 
 			// Get registered option
-			$this->options = get_option( 'cpa_settings_options' );
+			$this->style_options = get_option( 'tsv_settings_options' );
 		}
 
 		/**
@@ -337,7 +337,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		function register_page_options() {
 			
 			// Add a section
-			add_settings_section( 'tsv_section', 'Plugin OPtions', array( $this, 'display_section' ), __FILE__ );
+			add_settings_section( 'tsv_section', 'Plugin Options', array( $this, 'display_section' ), __FILE__ );
 			
 			// Add the background coluor field
 			add_settings_field( 'tsv_background_field', 'Background Color', array( $this, ('bg_colour_settings_field') ), __FILE__, 'tsv_section' );
@@ -359,10 +359,12 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function bg_colour_settings_field() {
 
-			$val = ( isset( $this->options[ 'background-colour' ] ) ) ? 
-			$this->options[ 'background-colour' ] : '';
-			echo '<input type="text" name="tsv_settings_options[background-colour]
-				value=" ' . $val . ' " class="tsv-color-picker">';
+			$val = ( isset( $this->style_options[ 'background_colour' ] ) ) ? 
+				$this->style_options[ 'background_colour' ] : '';
+			?>
+			<input type="text" name="tsv_settings_options[background_colour]"
+				value="<?php echo $val; ?>" class="tsv-color-picker">
+			<?php
 		}
 		
 		
@@ -375,9 +377,9 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function font_colour_settings_field() {
 
-			$val = ( isset( $this->options[ 'font-colour' ] ) ) ?
-			$this->options[ 'font-colour' ] : '';
-			echo '<input type="text" name="tsv_settings_options[font-colour] 
+			$val = ( isset( $this->style_options[ 'font_colour' ] ) ) ?
+				$this->style_options[ 'font_colour' ] : '';
+			echo '<input type="text" name="tsv_settings_options[font_colour]" 
 				value=" ' . $val . ' " class="tsv-color-picker">';
 		}
 		
@@ -393,6 +395,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 */
 		function validate_options($fields) {
 			
+			print_r($fields);
+			
 			$valid_fields = array();
 
 			// Validate background colour field
@@ -403,14 +407,14 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			$font_colour = trim( $fields[ 'font_colour' ] );
 			$valid_fields[ 'font_colour' ]	 = strip_tags( stripslashes( $font_colour ) );
 
-			// Check if the hex value is valid for bg color
-			if ( FALSE === $this->check_color( $background_colour ) ) {
+			// Check if the hex value is valid for bg colour
+			if ( FALSE === $this->check_colour( $background_colour ) ) {
 
 				// Set error message
-				add_settings_error( 'tsv_settings_options', 'tsv_bg_color_error', 'Insert a valid color for the background', 'error' );
+				add_settings_error( 'tsv_settings_options', 'tsv_bg_colour_error', "Insert a valid colour for the background $background_colour", 'error' );
 
 				// Get the previous valid value
-				$valid_fields[ 'background_colour' ] = $this->options[ 'background_colour' ];
+				$valid_fields[ 'background_colour' ] = $this->style_options[ 'background_colour' ];
 			}
 			else {
 
@@ -418,13 +422,13 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			}
 
 			// Check if the hex value is valid
-			if ( FALSE === $this->check_color( $font_colour ) ) {
+			if ( FALSE === $this->check_colour( $font_colour ) ) {
 				
 				// Set error message
-				add_settings_error( 'tsv_settings_options', 'tsv_font_color_error', 'Insert a valid color for the font', 'error' );
+				add_settings_error( 'tsv_settings_options', 'tsv_font_colour_error', "Insert a valid colour for the font $font_colour", 'error' );
 
 				// Get the previous valid value
-				$valid_fields[ 'font_colour' ] = $this->options[ 'font_colour' ];
+				$valid_fields[ 'font_colour' ] = $this->style_options[ 'font_colour' ];
 			}
 			else {
 
@@ -441,7 +445,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		
 		
 		/**
-		 * Check color
+		 * Check colour
 		 * 
 		 * Matches the pattern of the string entered by the user.
 		 * 
@@ -451,7 +455,9 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @since 0.0.1
 		 */
-		function check_color( $value ) {
+		function check_colour( $value ) {
+			
+			echo $value;
 					
 			if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) {
 				echo "Preg_match returned true";
