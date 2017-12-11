@@ -60,11 +60,12 @@ module.exports = function ( grunt ) {
 		},
                                     phpcs: {
                                                     application: {
-                                                                            src: [ 'application/classes/*.php', 'application/lib/**/*.php' ]
+                                                                            src: [ '*' ]
                                                     },
                                                     options: {
-                                                                        bin: 'vendor/bin/phpcs',
-                                                                        standard: 'Zend'
+                                                                        bin: '/home/shantanu/.config/composer/vendor/bin/phpcs',
+                                                                        standard: 'WordPress',
+                                                                        verbose: true
                                                     }
                                     }
 	} );
