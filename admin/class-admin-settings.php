@@ -28,13 +28,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		/**
 		 * Constructor
 		 */
-		public function __construct() {
-			
-			//Initialise background and font color defaults	
-			$this->style_options['background_colour'] = '#000000';
-			$this->style_options['font_colour'] = '#ffffff';
-
-		}
+		public function __construct() {}
 		
 		/**
 		 * Initialise the class
