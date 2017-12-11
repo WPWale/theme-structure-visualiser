@@ -419,7 +419,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// Check if the hex value is valid
 			if ( FALSE === $this->check_color( $font_colour ) ) {
-
+				
 				// Set error message
 				add_settings_error( 'tsv_settings_options', 'tsv_font_color_error', 'Insert a valid color for the font', 'error' );
 
@@ -452,7 +452,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1
 		 */
 		function check_color( $value ) {
-		
+					
 			if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) {
 				echo "Preg_match returned true";
 			
