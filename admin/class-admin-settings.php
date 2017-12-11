@@ -254,6 +254,8 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 				.tsv-template-path {
 					background-color: <?php echo $this->style_options[ 'background_colour' ]; ?>;
 					color: <?php echo $this->style_options[ 'font_colour' ]; ?>;
+					padding: 1rem 1rem;
+					border-radius: 10px 10px 10px 10px;
 				}
 			</style>
 			<?php
