@@ -28,7 +28,13 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		/**
 		 * Constructor
 		 */
-		public function __construct() {}
+		public function __construct() {
+			
+			//Initialise background and font color defaults	
+			$this->style_options['background_colour'] = '#000000';
+			$this->style_options['font_colour'] = '#ffffff';
+
+		}
 		
 		/**
 		 * Initialise the class
@@ -125,7 +131,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 				$this->style_options[ 'background_colour' ] : '';
 			?>
 			<input type="text" name="tsv_settings_options[background_colour]"
-				value="<?php echo $val; ?>" class="tsv-color-picker">
+				value="<?php echo $val; ?>" data-default-color="#000000" class="tsv-color-picker">
 			<?php
 		}
 		
@@ -143,7 +149,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 				$this->style_options[ 'font_colour' ] : '';
 			?>
 			<input type="text" name="tsv_settings_options[font_colour]" 
-				value="<?php echo $val; ?>" class="tsv-color-picker">';
+				value="<?php echo $val; ?>" data-default-color="#fff" class="tsv-color-picker">';
 			<?php
 		}
 		
