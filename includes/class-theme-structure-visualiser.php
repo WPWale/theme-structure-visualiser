@@ -112,7 +112,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		/**
 		 * Get templates
 		 *
-		 * @sinc 0.0.1 
+		 * @since 0.0.1 
 		 */
 		function get_templates() {
 
