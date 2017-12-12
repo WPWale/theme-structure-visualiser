@@ -97,14 +97,22 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1 
 		 */
 		function init() {
-
-			// Get template name
+			
+			/*
+			 * The action 'all' is fired before every other action in the Wordpress core.
+			 * This allows us to hook into actions such as get_header(), get_footer(), etc
+			 */
 			add_action( 'all', array( $this, 'get_templates' ) );
 			
-			// Get template part name
+			/*
+			 * The action 'all' is fired before every other action in the Wordpress core.
+			 * This allows us to hook into actions such as get_template_part_{slug}
+			 */
 			add_action( 'all', array( $this, 'get_template_parts' ) );
-			
-			// Enqueue jQuery
+
+			/*
+			 * Hook into wp_enqueue_scripts to enqueue the javascript file.
+			 */
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 			
 		}
