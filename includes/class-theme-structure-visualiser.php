@@ -88,7 +88,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * @param array $template_part_identifiers A list of template parts, eg template_part.
 			 */
 			$this->template_part_identifiers = apply_filters( 'tsv_template_part_identifiers', $template_part_identifiers );
-
 		}
 
 		/**
@@ -113,8 +112,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			/*
 			 * Hook into wp_enqueue_scripts to enqueue the javascript file.
 			 */
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
-			
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );	
 		}
 
 		/**
@@ -272,7 +270,6 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// Concatenate the two parts of the file name and the extension
 			return ($slug . $second_part . '.php');
-
 		}
 
 		/**
