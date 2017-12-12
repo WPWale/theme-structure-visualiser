@@ -161,7 +161,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @since 0.0.1
 		 */
-		public function get_file_name( $hook_patterns, $current_hook_handle ) {
+		public function get_template_file_name( $hook_patterns, $current_hook_handle ) {
 
 			// Get the arguements passed with the current hook
 			$current_hook_arguments = func_get_args();
@@ -180,13 +180,15 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		}
 
 		/**
+		 * Get Template Parts
 		 * 
+		 * @since 0.0.1
 		 */
-		function get_template_parts(){
+		function get_template_parts() {
 
 			// Get the handle of the current hook
 			$current_hook_handle = current_filter();
-			
+
 			// Initialise a variable to store the handles of template hooks
 			$hook_patterns = array();
 
@@ -197,24 +199,33 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				$hook_patterns[ $template_part_identifier ] = "get_$template_part_identifier";
 			}
 
-			foreach ( $hook_patterns as $key => $hook_pattern) {
-				
-				if ( strstr( $current_hook_handle, $hook_pattern ) ){
-					
-					// Get the arguements passed with the current hook
-					$current_hook_arguments = func_get_args();	
-					
-					$this->template_class = $key;
-					$this->template_slug = $current_hook_arguments[ 1 ];
-					$this->template_name = $current_hook_arguments[ 2 ];
-					
-					//print the output
-					$this->display_structure();
+			foreach ( $hook_patterns as $key => $hook_pattern ) {
+
+				if ( strstr( $current_hook_handle, $hook_pattern ) ) {
+					$this->get_template_parts_file_name( $key );
 				}
 			}
-			
 		}
 
+		/**
+		 * Get template parts file name
+		 * 
+		 * @param string $class template class name
+		 * 
+		 * @since 0.0.1
+		 */
+		public function get_template_parts_file_name( $class ) {
+
+			// Get the arguements passed with the current hook
+			$current_hook_arguments = func_get_args();
+
+			$this->template_class	 = $class;
+			$this->template_slug	 = $current_hook_arguments[ 1 ];
+			$this->template_name	 = $current_hook_arguments[ 2 ];
+
+			//print the output
+			$this->display_structure();
+		}
 
 		/**
 		 * Display the names of template files
