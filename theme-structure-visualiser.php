@@ -1,15 +1,23 @@
 <?php
 
 /**
- * Theme Structure Visualiser
- * 
- * This file declares the plugin constants and instantiates the two necessary classes.
+ * The plugin bootstrap file
+ *
+ * This file is read by WordPress to generate the plugin information in the
+ * plugin admin area. This file also includes all of the dependencies used by
+ * the plugin, registers the activation and deactivation functions, and defines
+ * a function that starts the plugin.
+ *
+ * @since             0.0.1
+ * @package           theme_structure_visualiser
+ *
+ * @wordpress-plugin
  * 
  * Plugin Name: Theme Structure Visualiser
- * Description: Visualise the basic structure of a website
+ * Description: Helps visualise the template structure of a theme
  * Version: 0.0.1
- * Author: Shantanu Desai
- * Description: Visualise the basic structure of a websiteAuthor URI  https://github.com/shantanu2704
+ * Author: BaapWP
+ * Author URI:  https://github.com/BaapWP
  * Text Domain: theme-structure-visualiser
  * Domain Path: /languages
  * License: GPL2
