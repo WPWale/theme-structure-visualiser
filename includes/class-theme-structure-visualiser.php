@@ -280,26 +280,22 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * 
 		 * @since 0.0.1
 		 */
-		function enqueue(){
+		function enqueue() {
 
 			// Enqueue the display header srcipt from the js directory
-			wp_enqueue_script( 'display_header_object', TSV_URL . 'assets/js/display-header-object.js', array('jquery')  );
-			
-			
-			// If the slug is not 'header' return early
-			if ( 'header'!== $this->template_slug ) {
+			wp_enqueue_script( 'display_header_object', TSV_URL . 'assets/js/display-header-object.js', array( 'jquery' ) );
 
+			// If the slug is not 'header' return early
+			if ( 'header' !== $this->template_slug ) {
 				return;
 			}
-
 
 			// Localize the script to send variables from PHP to Javascript
 			wp_localize_script( 'display_header_object', 'tsv_header_filename', array(
 				'slug'	 => $this->template_slug,
 				'path'	 => $this->setup_template_variables(),
 			) );
-			
-		}		
+		}
 
 	}// class
 
