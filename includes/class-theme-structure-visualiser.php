@@ -142,6 +142,27 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				return;
 			}
 
+			$this->get_file_name( $hook_patterns, $current_hook_handle );
+
+			// If the slug is not 'header'
+			if ( 'header' !== $this->template_slug ) {
+
+				//print the output
+				$this->display_structure();
+			}
+		}
+
+		/**
+		 * Get file name
+		 * 
+		 * Gets the different parts of the file name of the template
+		 * 
+		 * @param array $hook_patters An array of hook_patterns
+		 * 
+		 * @since 0.0.1
+		 */
+		public function get_file_name( $hook_patterns, $current_hook_handle ) {
+
 			// Get the arguements passed with the current hook
 			$current_hook_arguments = func_get_args();
 
@@ -150,23 +171,14 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			// The template 'class' is 'header' at 'get_header' key, for example
 			$this->template_class = $flipped_hook_patterns[ $current_hook_handle ];
-			
+
 			// The template 'slug' is the same as 'template_class'
 			$this->template_slug = $flipped_hook_patterns[ $current_hook_handle ];
 
 			//  The template 'name' is the second arguement.
 			$this->template_name = $current_hook_arguments[ 1 ];
-
-			// If the slug is not 'header'
-			if ( 'header' !== $this->template_slug ) {
-
-				//print the output
-				$this->display_structure();
-
-			}
 		}
-		
-		
+
 		/**
 		 * 
 		 */
