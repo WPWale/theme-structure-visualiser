@@ -38,16 +38,16 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		public function init() {
 			
 			// Apply the color settings
-			add_action( 'wp_head', array( &$this, 'apply_colours' ) );
+			add_action( 'wp_head', array( $this, 'apply_colours' ) );
 
 			// Add the page to the admin menu
-			add_action( 'admin_menu', array( &$this, 'add_page' ) );
+			add_action( 'admin_menu', array( $this, 'add_page' ) );
 
 			// Register page options
-			add_action( 'admin_init', array( &$this, 'register_page_options' ) );
+			add_action( 'admin_init', array( $this, 'register_page_options' ) );
 
 			// Register javascript
-			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_admin_js' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_js' ) );
 
 			// Get registered option
 			$this->style_options = get_option( 'tsv_settings_options' );
