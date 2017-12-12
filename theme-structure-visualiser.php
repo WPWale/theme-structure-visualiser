@@ -47,3 +47,12 @@ require_once TSV_PATH . 'includes/class-theme-structure-visualiser.php';
 
 $tsv = new Theme_Structure_Visualiser();
 $tsv->init();
+
+
+/**
+ * The admin settings class
+ */
+require_once TSV_PATH . 'admin/class-admin-settings.php';
+
+$tsv_admin = new Admin_Settings();
+$tsv_admin->init();

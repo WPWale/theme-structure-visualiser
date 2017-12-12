@@ -57,13 +57,24 @@ module.exports = function ( grunt ) {
 				files: [ 'readme.txt' ],
 				tasks: [ 'wp_readme_to_markdown' ]
 			}
-		}
+		},
+                                    phpcs: {
+                                                    application: {
+                                                                            src: [ '*' ]
+                                                    },
+                                                    options: {
+                                                                        bin: '/home/shantanu/.config/composer/vendor/bin/phpcs',
+                                                                        standard: 'WordPress',
+                                                                        verbose: true
+                                                    }
+                                    }
 	} );
 
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
+                  grunt.loadNpmTasks( 'grunt-phpcs' );
 
 	grunt.registerTask( 'default', [
 		'watch'

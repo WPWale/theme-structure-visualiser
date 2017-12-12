@@ -88,6 +88,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			 * @param array $template_part_identifiers A list of template parts, eg template_part.
 			 */
 			$this->template_part_identifiers = apply_filters( 'tsv_template_part_identifiers', $template_part_identifiers );
+
 		}
 
 		/**
@@ -96,9 +97,16 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * @since 0.0.1 
 		 */
 		function init() {
+
+			// Get template name
 			add_action( 'all', array( $this, 'get_templates' ) );
+			
+			// Get template part name
 			add_action( 'all', array( $this, 'get_template_parts' ) );
+			
+			// Enqueue jQuery
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
+			
 		}
 
 		/**
@@ -259,8 +267,9 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				'slug'	 => $this->template_slug,
 				'path'	 => $this->setup_template_variables(),
 			) );
-		}
+			
+		}		
 
 	}// class
 
-} //class_exists
+} //class_exists1
