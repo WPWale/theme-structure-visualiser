@@ -139,8 +139,11 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			if ( !in_array( $current_hook_handle, $hook_patterns ) ) {
 				return;
 			}
+			
+			// Get the arguements passed with the current hook
+			$current_hook_arguments = func_get_args();
 
-			$this->get_template_file_name( $hook_patterns, $current_hook_handle );
+			$this->get_template_file_name( $current_hook_arguments, $hook_patterns, $current_hook_handle );
 
 			// If the slug is not 'header'
 			if ( 'header' !== $this->template_slug ) {
@@ -154,15 +157,14 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * Get file name
 		 * 
 		 * Gets the different parts of the file name of the template
-		 * 
-		 * @param array $hook_patters An array of hook_patterns
+		 *
+		 * @param array $current_hook_arguments An array of current hook arguments
+		 *  @param array $hook_patters An array of hook_patterns
+		 * @param string $current_hook_handle Name of the current handle
 		 * 
 		 * @since 0.0.1
 		 */
-		public function get_template_file_name( $hook_patterns, $current_hook_handle ) {
-
-			// Get the arguements passed with the current hook
-			$current_hook_arguments = func_get_args();
+		public function get_template_file_name( $current_hook_arguments, $hook_patterns, $current_hook_handle ) {
 
 			// Flip the keys and values of the pattern array
 			$flipped_hook_patterns = array_flip( $hook_patterns );
@@ -175,6 +177,8 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 
 			//  The template 'name' is the second arguement.
 			$this->template_name = $current_hook_arguments[ 1 ];
+			
+//			print_r($current_hook_arguments);
 		}
 
 		/**
