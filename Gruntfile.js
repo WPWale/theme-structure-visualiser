@@ -58,16 +58,16 @@ module.exports = function ( grunt ) {
 				tasks: [ 'wp_readme_to_markdown' ]
 			}
 		},
-                                    phpcs: {
-                                                    application: {
-                                                                            src: [ '*' ]
-                                                    },
-                                                    options: {
-                                                                        bin: '/home/shantanu/.config/composer/vendor/bin/phpcs',
-                                                                        standard: 'WordPress',
-                                                                        verbose: true
-                                                    }
-                                    }
+		phpcs: {
+			application: {
+				    src: [ '*' ]
+			},
+			options: {
+				bin: '/home/shantanu/.config/composer/vendor/bin/phpcs',
+				standard: 'WordPress',
+				verbose: true
+			}
+		}
 	} );
 
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
