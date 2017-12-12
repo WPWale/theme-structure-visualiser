@@ -140,7 +140,7 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 				return;
 			}
 
-			$this->get_file_name( $hook_patterns, $current_hook_handle );
+			$this->get_template_file_name( $hook_patterns, $current_hook_handle );
 
 			// If the slug is not 'header'
 			if ( 'header' !== $this->template_slug ) {
@@ -200,7 +200,9 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 			foreach ( $hook_patterns as $key => $hook_pattern ) {
 
 				if ( strstr( $current_hook_handle, $hook_pattern ) ) {
-					$this->get_template_parts_file_name( $key );
+
+					$current_hook_arguments = func_get_args();
+					$this->get_template_parts_file_name( $key, $current_hook_arguments );
 				}
 			}
 		}
@@ -209,13 +211,13 @@ if ( !class_exists( 'Theme_Structure_Visualiser' ) ) {
 		 * Get template parts file name
 		 * 
 		 * @param string $class template class name
+		 * @param array $$current_hook_arguments arguments passed to the hook
 		 * 
 		 * @since 0.0.1
 		 */
-		public function get_template_parts_file_name( $class ) {
+		public function get_template_parts_file_name( $class, $current_hook_arguments  ) {
 
 			// Get the arguements passed with the current hook
-			$current_hook_arguments = func_get_args();
 
 			$this->template_class	 = $class;
 			$this->template_slug	 = $current_hook_arguments[ 1 ];
