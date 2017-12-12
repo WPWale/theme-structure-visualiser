@@ -160,47 +160,26 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		 * @since 	0.0.1
 		 */
 		public function validate_options($fields) {
-			
-			print_r($fields);
-			
 			$valid_fields = array();
 
-			// Validate background colour field
-			$background_colour = trim( $fields[ 'background_colour' ] );
-			$valid_fields[ 'background_colour' ] = strip_tags( stripslashes( $background_colour ) );
-
-			// Validate font colour field
-			$font_colour = trim( $fields[ 'font_colour' ] );
-			$valid_fields[ 'font_colour' ]	 = strip_tags( stripslashes( $font_colour ) );
-
-			// Check if the hex value is valid for bg colour
-			if ( FALSE === $this->check_colour( $background_colour ) ) {
-
-				// Set error message
-				add_settings_error( 'tsv_settings_options', 'tsv_bg_colour_error', "Insert a valid colour for the background $background_colour", 'error' );
-
-				// Get the previous valid value
-				$valid_fields[ 'background_colour' ] = $this->style_options[ 'background_colour' ];
+			$admin_settings = array( 'background_colour',  'font_colour');
+			
+			foreach($admin_settings as $setting){
+				$admin_settings[ $setting ] = trim( $fields[ $setting ] );
+				$valid_fields[ $setting ] = strip_tags( stripslashes( $admin_settings[ $setting ] ) );
 			}
-			else {
-
-				$valid_fields[ 'background_colour' ] = $background_colour;
-			}
-
-			// Check if the hex value is valid
-			if ( FALSE === $this->check_colour( $font_colour ) ) {
+			
+			foreach ( $admin_settings as $key => $setting ) {
 				
-				// Set error message
-				add_settings_error( 'tsv_settings_options', 'tsv_font_colour_error', "Insert a valid colour for the font $font_colour", 'error' );
-
-				// Get the previous valid value
-				$valid_fields[ 'font_colour' ] = $this->style_options[ 'font_colour' ];
+				//check if the hex value is valid for both the colours
+				if ( FALSE === $this->check_colour( $setting ) ){
+					add_settings_error('tsv_settings_options', 'tsv_' . $setting . '_error', "Insert a valid colour for $key", 'error');
+					$valid_fields[ $setting ] = $this->style_options[ $setting ];
+				}else {
+					$valid_fields[ $setting ] = $admin_settings[ $setting ];
+				}
+					
 			}
-			else {
-
-				$valid_fields[ 'font_colour' ] = $font_colour;
-			}
-
 			return apply_filters( 'validate_options', $valid_fields, $fields );
 		}
 		
@@ -217,9 +196,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		 * @since 0.0.1
 		 */
 		public function check_colour( $value ) {
-			
-			echo $value;
-					
+
 			if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) {
 				echo "Preg_match returned true";
 			
