@@ -145,7 +145,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 				$this->style_options[ 'font_colour' ] : '';
 			?>
 			<input type="text" name="tsv_settings_options[font_colour]" 
-				value="<?php echo $val; ?>" data-default-color="#fff" class="tsv-color-picker">';
+				value="<?php echo $val; ?>" data-default-color="#fff" class="tsv-color-picker">
 			<?php
 		}
 		
@@ -159,31 +159,32 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		 * 
 		 * @since 	0.0.1
 		 */
-		public function validate_options($fields) {
+		public function validate_options( $fields ) {
 			$valid_fields = array();
 
-			$admin_settings = array( 'background_colour',  'font_colour');
-			
-			foreach($admin_settings as $setting){
-				$admin_settings[ $setting ] = trim( $fields[ $setting ] );
-				$valid_fields[ $setting ] = strip_tags( stripslashes( $admin_settings[ $setting ] ) );
-			}
-			
+			$admin_settings = array(
+				'background_colour'	 => '#000000',
+				'font_colour'		 => '#ffffff' );
+
 			foreach ( $admin_settings as $key => $setting ) {
-				
+				$admin_settings[ $key ]	 = trim( $fields[ $key ] );
+				$valid_fields[ $key ]	 = strip_tags( stripslashes( $admin_settings[ $key ] ) );
+			}
+
+			foreach ( $admin_settings as $key => $setting ) {
+
 				//check if the hex value is valid for both the colours
-				if ( FALSE === $this->check_colour( $setting ) ){
-					add_settings_error('tsv_settings_options', 'tsv_' . $setting . '_error', "Insert a valid colour for $key", 'error');
-					$valid_fields[ $setting ] = $this->style_options[ $setting ];
-				}else {
-					$valid_fields[ $setting ] = $admin_settings[ $setting ];
+				if ( FALSE === $this->check_colour( $setting ) ) {
+					add_settings_error( 'tsv_settings_options', 'tsv_' . $key . '_error', "Insert a valid colour for $key", 'error' );
+					$valid_fields[ $key ] = $this->style_options[ $key ];
 				}
-					
+				else {
+					$valid_fields[ $key ] = $admin_settings[ $key ];
+				}
 			}
 			return apply_filters( 'validate_options', $valid_fields, $fields );
 		}
-		
-		
+
 		/**
 		 * Check colour
 		 * 
