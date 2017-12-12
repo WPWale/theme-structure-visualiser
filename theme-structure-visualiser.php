@@ -1,22 +1,18 @@
 <?php
 
 /**
- * Summary (no period for file headers)
- *
- * Description. (use period)
- *
- * @author  Shantanu Desai <shantanu2846@gmail.com>
- * @since 0.0.1
- */
-/*
-  Plugin Name: Theme Structure Visualiser
-  Description: Visualise the basic structure of a website
-  Version: 0.0.1
-  Author: Shantanu Desai
-  Author URI  https://github.com/shantanu2704
-  Text Domain: theme-structure-visualiser
-  Domain Path: /languages
-  License: GPL2
+ * Theme Structure Visualiser
+ * 
+ * This file declares the plugin constants and instantiates the two necessary classes.
+ * 
+ * Plugin Name: Theme Structure Visualiser
+ * Description: Visualise the basic structure of a website
+ * Version: 0.0.1
+ * Author: Shantanu Desai
+ * Description: Visualise the basic structure of a websiteAuthor URI  https://github.com/shantanu2704
+ * Text Domain: theme-structure-visualiser
+ * Domain Path: /languages
+ * License: GPL2
  */
 
 // If this file is called directly, abort.
