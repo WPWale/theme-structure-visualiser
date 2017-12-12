@@ -22,7 +22,7 @@ if ( !defined( 'TSV_PATH' ) ) {
 	/**
 	 * Path to the plugin directory.
 	 *
-	 * @since 3.2
+	 * @since 0.0.1
 	 */
 	define( 'TSV_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 }
@@ -31,7 +31,7 @@ if ( !defined( 'TSV_URL' ) ) {
 	/**
 	 * URL to the plugin directory.
 	 *
-	 * @since 3.2
+	 * @since 0.0.1
 	 */
 	define( 'TSV_URL', trailingslashit( plugin_dir_url(  __FILE__ ) ) );
 }
