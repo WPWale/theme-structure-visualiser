@@ -84,7 +84,6 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 					settings_fields( __FILE__ );
 					do_settings_sections( __FILE__ );
 					submit_button();
-
 					?>
 					</form>
 			</div> <!-- wrap -->
