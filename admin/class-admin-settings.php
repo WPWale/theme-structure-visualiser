@@ -249,7 +249,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		public function apply_colours(){
 			
 			?>
-			<style>
+			<style type="text/css">
 				.tsv-template-path {
 					background-color: <?php echo $this->style_options[ 'background_colour' ]; ?>;
 					color: <?php echo $this->style_options[ 'font_colour' ]; ?>;
