@@ -25,7 +25,7 @@ module.exports = function ( grunt ) {
 					sourceMap: true,
 				},
 				files: {
-					'admin/js/theme-structure-visualiser.min.js': [ 'admin/js/theme-structure-visualiser.js' ]
+					'assets/js/display-header-object.min.js': [ 'assets/js/display-header-object.js' ]
 				}
 			}
 		},
