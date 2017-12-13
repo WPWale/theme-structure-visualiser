@@ -22,7 +22,7 @@ module.exports = function ( grunt ) {
 					'assets/js/prepend-to-next.js',
 					'assets/js/display-header-object.js',
 				],
-				dest: 'assets/js/theme-structure-visualiser.js',
+				dest: 'assets/js/theme-structure-visualiser.min.js',
 			}
 		},
 		uglify: {
@@ -34,7 +34,7 @@ module.exports = function ( grunt ) {
 					sourceMap: true,
 				},
 				files: {
-					'assets/js/theme-structure-visualiser': [ 'assets/js/theme-structure-visualiser.js' ]
+					'assets/js/theme-structure-visualiser.min.js': [ 'assets/js/theme-structure-visualiser.min.js' ]
 				}
 			}
 		},
@@ -80,13 +80,16 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 
 	grunt.registerTask( 'default', [
-		'watch'
+		'wp_readme_to_markdown',
+		'concat',
+		'uglify'
 	] );
 
 };

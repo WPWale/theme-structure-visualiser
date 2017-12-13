@@ -1,4 +1,4 @@
-<img src='https://github.com/BaapWP/theme-structure-visualiser/raw/master/assets/icon-128x128.png' align='right' />
+<img src='https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/banner-772x250.png'/>
 
 # Theme Structure Visualiser #
 **Contributors:** [wpshades](https://profiles.wordpress.org/wpshades), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
