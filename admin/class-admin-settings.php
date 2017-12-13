@@ -229,7 +229,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 			// Css rules for Color Picker
 			wp_enqueue_style( 'wp-color-picker' );
 			
-			wp_enqueue_script( 'tsv_custom_js', TSV_URL . 'assets/js/jquery.custom.js', array( 'jquery', 'wp-color-picker' ), '', true );
+			wp_enqueue_script( 'tsv_custom_js', TSV_URL . 'assets/js/custom-colour-picker.js', array( 'jquery', 'wp-color-picker' ), '', true );
 		}
 		
 		
