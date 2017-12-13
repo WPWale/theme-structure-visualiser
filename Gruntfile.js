@@ -8,7 +8,7 @@ module.exports = function ( grunt ) {
 				options: {
 					screenshot_url: '<%= pkg.repository.url %>/raw/master/assets/{screenshot}.png',
 					post_convert: function ( file ) {
-						return "<img src='" + grunt.config.get( 'pkg' ).repository.url + "/raw/master/assets/icon-128x128.png' align='right' />\n\n" + file;
+						return "<img src='" + grunt.config.get( 'pkg' ).repository.url + "/raw/master/org-assets/banner-772x250.png'/>\n\n" + file;
 					}
 				},
 				files: {
