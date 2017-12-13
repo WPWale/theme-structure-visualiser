@@ -15,7 +15,7 @@
  * 
  * Plugin Name: Theme Structure Visualiser
  * Description: Helps visualise the template structure of a theme
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: BaapWP
  * Author URI:  https://github.com/BaapWP
  * Text Domain: theme-structure-visualiser
