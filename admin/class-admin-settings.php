@@ -124,7 +124,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		public function bg_colour_settings_field() {
 
 			$val = ( isset( $this->style_options[ 'background_colour' ] ) ) ? $this->style_options[ 'background_colour' ] : '';
-			$this->settings_field( $val, 'background_colour' );
+			$this->settings_field( $val, 'background_colour', '000000' );
 		}
 
 		
@@ -138,7 +138,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		public function font_colour_settings_field() {
 
 			$val = ( isset( $this->style_options[ 'font_colour' ] ) ) ? $this->style_options[ 'font_colour' ] : '';
-			$this->settings_field($val, 'font_colour');
+			$this->settings_field($val, 'font_colour', 'ffffff');
 		}
 		
 		
@@ -146,15 +146,16 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		 * Settings field
 		 * 
 		 * @param string $val Value of the color to be set
-		 * @param string $setting Name of the setting to which the value is applied	
+		 * @param string $setting Name of the setting to which the value is applied
+		 * @param string $default_colour Default colour for background and font	
 		 * 
 		 * @since 0.0.1
 		 */
-		public function settings_field($val, $setting){
+		public function settings_field($val, $setting, $default_colour){
 			
 			?>
 			<input type="text" name="tsv_settings_options[<?php echo $setting; ?>]" 
-			value="<?php echo $val; ?>" data-default-color="#fff" class="tsv-color-picker">
+			value="<?php echo $val; ?>" data-default-color="#<?php echo $default_colour; ?>" class="tsv-color-picker">
 			<?php
 		}
 		
