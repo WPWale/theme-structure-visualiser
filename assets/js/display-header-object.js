@@ -4,7 +4,7 @@ jQuery( 'document' ).ready( function ( $ ) {
     if ( typeof tsv_header_filename != "undefined" ) {
 
 	// Create an HTML div with classes 'tsv-template-path ' and 'header'
-	var template = $( '<div class="tsv-template-path header" />' );
+	var template = $( '<div class="tsv-template-path tsv-header" />' );
 
 	// Print the path
 	template.html( tsv_header_filename.path );

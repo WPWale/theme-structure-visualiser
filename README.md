@@ -2,7 +2,7 @@
 
 # Theme Structure Visualiser #
 **Contributors:** [wpshades](https://profiles.wordpress.org/wpshades), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
-Donate link: 
+**Version:** 1.0.0  
 **Tags:** themes, templates, template parts, learning tools  
 **Requires at least:** 3.0.0  
 **Tested up to:** 4.9.1  

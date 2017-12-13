@@ -10,6 +10,6 @@
 // If this file is called directly, abort.
 if ( !defined( 'ABSPATH' ) ) exit(); ?>
 
-<div class="tsv-template-path <?php echo $class; ?>">
+<div class="tsv-template-path <?php echo "tsv-$class"; ?>">
 	<?php echo $path; ?>
 </div>
