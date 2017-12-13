@@ -78,7 +78,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 			
 			?>
 			<div class="wrap">
-				<h2> Theme Structure Visualiser OPtions </h2>
+				<h2> Theme Structure Visualiser Options </h2>
 					<form method="post" action="options.php">
 					<?php
 					settings_fields( __FILE__ );
@@ -101,7 +101,7 @@ if ( !class_exists( 'Admin_Settings' ) ) {
 		public function register_page_options() {
 			
 			// Add a section
-			add_settings_section( 'tsv_section', 'Plugin Options', array( $this, 'display_section' ), __FILE__ );
+			add_settings_section( 'tsv_section', 'Display Options', array( $this, 'display_section' ), __FILE__ );
 			
 			// Add the background coluor field
 			add_settings_field( 'tsv_background_field', 'Background Color', array( $this, ('bg_colour_settings_field') ), __FILE__, 'tsv_section' );
