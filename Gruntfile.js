@@ -16,6 +16,15 @@ module.exports = function ( grunt ) {
 				}
 			}
 		},
+		concat: {
+			release: {
+				src: [
+					'assets/js/prepend-to-next.js',
+					'assets/js/display-header-object.js',
+				],
+				dest: 'assets/js/theme-structure-visualiser.js',
+			}
+		},
 		uglify: {
 			dist: {
 				options: {
@@ -25,7 +34,7 @@ module.exports = function ( grunt ) {
 					sourceMap: true,
 				},
 				files: {
-					'assets/js/display-header-object.min.js': [ 'assets/js/display-header-object.js' ]
+					'assets/js/theme-structure-visualiser': [ 'assets/js/theme-structure-visualiser.js' ]
 				}
 			}
 		},
