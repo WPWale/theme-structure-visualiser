@@ -1,7 +1,7 @@
 <img src='https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/banner-772x250.png'/>
 
 # Theme Structure Visualiser #
-**Contributors:** [wpshades](https://profiles.wordpress.org/wpshades), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
+**Contributors:** [wpshades](https://profiles.wordpress.org/wpshades), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla), [sheneillepatil](https://profiles.wordpress.org/sheneillepatil)  
 **Version:** 1.0.0  
 **Tags:** themes, templates, template parts, learning tools  
 **Requires at least:** 3.0.0  
@@ -27,5 +27,5 @@ Intended for use in learning and development, it can be useful to those learning
  * Activate it through the ‘Plugins’ section.
 
 ## Changelog ##
-###1.0.0###
+### 1.0.0 ###
 First release
