@@ -13,7 +13,7 @@ export MAINFILE="$PLUGINSLUG.php" # this should be the name of your main php fil
 GITPATH="$DIR/" # this file should be in the base of your git repository
 
 # svn config
-SVNPATH=""$(dirname $DIR)"/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
+SVNPATH="/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
 SVNURL="https://plugins.svn.wordpress.org/$PLUGINSLUG/" # Remote SVN repo on wordpress.org, with no trailing slash
 
 # Detect svn username based on url
