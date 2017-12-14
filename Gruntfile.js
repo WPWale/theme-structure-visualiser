@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
 		wp_readme_to_markdown: {
 			dist: {
 				options: {
-					screenshot_url: '<%= pkg.repository.url %>/raw/master/assets/{screenshot}.png',
+					screenshot_url: '<%= pkg.repository.url %>/raw/master/org-assets/{screenshot}.png',
 					post_convert: function ( file ) {
 						return "<img src='" + grunt.config.get( 'pkg' ).repository.url + "/raw/master/org-assets/banner-772x250.png'/>\n\n" + file;
 					}
