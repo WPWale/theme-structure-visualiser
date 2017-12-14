@@ -25,5 +25,5 @@ Intended for use in learning and development, it can be useful to those learning
  * Activate it through the ‘Plugins’ section.
 
 == Changelog ==
-=1.0.0=
+= 1.0.0 =
 First release
