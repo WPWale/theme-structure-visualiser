@@ -1,5 +1,5 @@
 === Theme Structure Visualiser ===
-Contributors: wpshades, saurabhshukla
+Contributors: wpshades, saurabhshukla, sheneillepatil
 Version: 1.0.0
 Tags: themes, templates, template parts, learning tools
 Requires at least: 3.0.0

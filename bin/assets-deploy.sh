@@ -13,7 +13,7 @@ export MAINFILE="$PLUGINSLUG.php" # this should be the name of your main php fil
 GITPATH="$DIR/" # this file should be in the base of your git repository
 
 # svn config
-SVNPATH="/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
+SVNPATH=""$(dirname $DIR)"/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
 SVNURL="https://plugins.svn.wordpress.org/$PLUGINSLUG/" # Remote SVN repo on wordpress.org, with no trailing slash
 
 # Detect svn username based on url
@@ -40,24 +40,16 @@ echo "Creating local copy of SVN repo ..."
 svn co $SVNURL $SVNPATH
 
 echo "Exporting plugin assets from git to the assets of SVN"
-git archive --format=tar --prefix=$SVNPATH/assets/ HEAD /org-assets | (tar xf -)
+git archive --format=tar HEAD:org-assets/ | (cd $SVNPATH/assets/ && tar xf -)
 
 echo "Ignoring github specific files and deployment script"
-svn propset svn:ignore "deploy.sh
-deploy-common.sh
-readme.sh
-README.md
-bin
-.git
-.gitattributes
-.gitignore
-map.conf
-nginx.log
-tests
-phpunit.xml
-phpunit.xml.dist
-.gitlab-ci.yml
-.travis.yml" "$SVNPATH/trunk/"
+svn propset svn:ignore "*.?
+*.??
+*.???
+*.[!p]??
+*.?[!n]?
+*.??[!g]
+*.????*" "$SVNPATH/assets/"
 
 echo -e "Enter a commit message: \c"
 read COMMITMSG

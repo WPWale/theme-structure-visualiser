@@ -11,5 +11,8 @@
 if ( !defined( 'ABSPATH' ) ) exit(); ?>
 
 <div class="tsv-template-path <?php echo "tsv-$class"; ?>">
-	<?php echo $path; ?>
+	<?php // $url = add_query_arg(array('file' => $path),admin_url( 'theme-editor.php' )); ?>
+	<a href="<?php echo $url ?>" title="Click to edit in WordPress editor">
+		<?php echo $path; ?>
+	</a>
 </div>
