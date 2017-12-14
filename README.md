@@ -28,13 +28,13 @@ Intended for use in learning and development, it can be useful to those learning
 
 ## Screenshots ##
 ### 1. Templates and template parts shown with default colours for background and font. ###
-![Templates and template parts shown with default colours for background and font.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/assets/screenshot-1.png)
+![Templates and template parts shown with default colours for background and font.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/screenshot-1.png)
 
 ### 2. Templates and template parts shown with custom colours for background and font. ###
-![Templates and template parts shown with custom colours for background and font.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/assets/screenshot-2.png)
+![Templates and template parts shown with custom colours for background and font.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/screenshot-2.png)
 
 ### 3. Admin page with controls for customizing the background and font colours. ###
-![Admin page with controls for customizing the background and font colours.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/assets/screenshot-3.png)
+![Admin page with controls for customizing the background and font colours.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/screenshot-3.png)
 
 
 ## Changelog ##
