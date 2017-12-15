@@ -2,11 +2,11 @@
 
 # Theme Structure Visualiser #
 **Contributors:** [wpshades](https://profiles.wordpress.org/wpshades), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla), [sheneillepatil](https://profiles.wordpress.org/sheneillepatil)  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 **Tags:** themes, templates, template parts, learning tools  
 **Requires at least:** 3.0.0  
 **Tested up to:** 4.9.1  
-**Stable tag:** trunk  
+**Stable tag:** 1.0.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
