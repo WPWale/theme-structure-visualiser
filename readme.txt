@@ -24,6 +24,11 @@ Intended for use in learning and development, it can be useful to those learning
  * Alternatively, you can download the plugin from the repository. Unzip it and upload it to the plugins folder of your WordPress installation (wp-content/plugins/ directory of your WordPress installation).
  * Activate it through the ‘Plugins’ section.
 
+== Screenshots ==
+1. Templates and template parts shown with default colours for background and font.
+2. Templates and template parts shown with custom colours for background and font.
+3. Admin page with controls for customizing the background and font colours.
+
 == Changelog ==
 = 1.0.0 =
 First release

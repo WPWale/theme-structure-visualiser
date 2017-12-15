@@ -26,6 +26,17 @@ Intended for use in learning and development, it can be useful to those learning
  * Alternatively, you can download the plugin from the repository. Unzip it and upload it to the plugins folder of your WordPress installation (wp-content/plugins/ directory of your WordPress installation).
  * Activate it through the ‘Plugins’ section.
 
+## Screenshots ##
+### 1. Templates and template parts shown with default colours for background and font. ###
+![Templates and template parts shown with default colours for background and font.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/screenshot-1.png)
+
+### 2. Templates and template parts shown with custom colours for background and font. ###
+![Templates and template parts shown with custom colours for background and font.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/screenshot-2.png)
+
+### 3. Admin page with controls for customizing the background and font colours. ###
+![Admin page with controls for customizing the background and font colours.](https://github.com/BaapWP/theme-structure-visualiser/raw/master/org-assets/screenshot-3.png)
+
+
 ## Changelog ##
 ### 1.0.0 ###
 First release
